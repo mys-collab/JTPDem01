@@ -4,6 +4,10 @@ target/
 !**/src/main/**
 !**/src/test/**
 
+#不上传mvnw mvnw.cmd .mvn
+mvnw
+mvnw.cmd
+.mvn/
 ### STS ###
 .apt_generated
 .classpath
