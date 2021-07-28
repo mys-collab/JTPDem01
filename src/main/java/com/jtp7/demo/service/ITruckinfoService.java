@@ -48,5 +48,5 @@ public interface ITruckinfoService {
      * @param version
      * @return
      */
-    Truckinfo findbyVersion(int version);
+    List<Truckinfo> findbyVersion(int version);
 }
