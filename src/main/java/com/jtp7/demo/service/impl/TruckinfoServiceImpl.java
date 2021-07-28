@@ -139,10 +139,10 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
      * @return
      */
     @Override
-    public Truckinfo findbyVersion(int version) {
+    public List<Truckinfo> findbyVersion(int version) {
         LambdaQueryWrapper<Truckinfo> truckinfoLambdaQueryWrapper = new LambdaQueryWrapper<>();
         truckinfoLambdaQueryWrapper.eq(Truckinfo::getVersion,version);
-        Truckinfo truckinfo1 = truckinfoMapper.selectOne(truckinfoLambdaQueryWrapper);
+        List<Truckinfo> truckinfo1 = truckinfoMapper.selectList(truckinfoLambdaQueryWrapper);
         return truckinfo1;
     }
 
