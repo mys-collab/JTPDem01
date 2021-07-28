@@ -5,6 +5,7 @@ import com.jtp7.demo.config.SwaggerConfiguration;
 import com.jtp7.demo.entity.Truckinfo;
 import com.jtp7.demo.entity.response.CommonCode;
 import com.jtp7.demo.entity.response.ResponseResult;
+import com.jtp7.demo.entity.tdo.TruckinfoDTO;
 import com.jtp7.demo.service.ITruckinfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -12,9 +13,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -37,10 +36,29 @@ public class TruckinfoController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户的id", required = true, paramType = "path", dataType = "Integer")
     })
-    public ResponseResult<Truckinfo> fidnById(@PathVariable("id") Integer id) {
-        Truckinfo byId = iTruckinfoService.findById(id);
-        return new ResponseResult(CommonCode.SUCCESS, byId);
+    public ResponseResult<Truckinfo> findById(@PathVariable("id") Integer id) {
+        Truckinfo truckinfo = iTruckinfoService.findById(id);
+        return new ResponseResult(CommonCode.SUCCESS, truckinfo);
     }
 
+    @PostMapping("addtruckinfo")
+    @ApiOperation(value="新增司机")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "truckinfoDTO", value = "新增司机信息", required = true, paramType = "body", dataType = "TruckinfoDTO")
+    })
+    public ResponseResult<Object> addTruckInfo(@RequestBody TruckinfoDTO truckinfoDTO) {
+       iTruckinfoService.add(truckinfoDTO);
+        return  new ResponseResult<>(CommonCode.YES_ADD_TRUCKINFO);
+    }
+
+    @PostMapping("updatetruckinfo")
+    @ApiOperation(value="修改司机信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "truckinfoDTO", value = "修改司机信息", required = true, paramType = "body", dataType = "TruckinfoDTO")
+    })
+    public ResponseResult<Object> updataTruckInfo(@RequestBody TruckinfoDTO truckinfoDTO) {
+       iTruckinfoService.update(truckinfoDTO);
+        return  new ResponseResult<>(CommonCode.YES_ADD_TRUCKINFO);
+    }
 
 }

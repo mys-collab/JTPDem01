@@ -1,14 +1,18 @@
 package com.jtp7.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.jtp7.demo.entity.Truckinfo;
 import com.jtp7.demo.entity.response.CommonCode;
+import com.jtp7.demo.entity.tdo.TruckinfoDTO;
 import com.jtp7.demo.exception.ExceptionCast;
 import com.jtp7.demo.mapper.TruckinfoMapper;
 import com.jtp7.demo.service.ITruckinfoService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 /**
  * <p>
@@ -34,10 +38,75 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
      */
     @Override
     public Truckinfo findById(int id) {
+
         Truckinfo truckinfoDTO = truckinfoMapper.selectById(id);
         if (truckinfoDTO == null ) {
             ExceptionCast.cast(CommonCode.FAIL);
         }
         return truckinfoDTO;
     }
+
+    /**
+     * 新增用户
+     *
+     * @param truckinfoDTO
+     */
+    @Override
+    public TruckinfoDTO add(TruckinfoDTO truckinfoDTO) {
+
+        if (!ObjectUtils.isEmpty(this.DrivingCodeIsNull(truckinfoDTO))) {
+            ExceptionCast.cast(CommonCode.NO_ADD_TRUCKINFO);
+        }
+
+        Truckinfo truckinfo = new Truckinfo();
+        BeanUtils.copyProperties(truckinfoDTO,truckinfo);
+        truckinfoMapper.insert(truckinfo);
+        return truckinfoDTO;
+    }
+
+    @Override
+    public TruckinfoDTO update(TruckinfoDTO truckinfoDto ){
+        if (ObjectUtils.isEmpty(truckinfoDto.getDrivingcode())){
+            ExceptionCast.cast(CommonCode.DRIVINGCODE_ISNULL);
+        }
+
+        Truckinfo truckinfoOne = this.findById(truckinfoDto.getId());
+        if (ObjectUtils.isEmpty(truckinfoOne) || ObjectUtils.isEmpty(truckinfoOne.getDrivingcode())){
+            ExceptionCast.cast(CommonCode.NO_TRUCKINFO);
+        }
+
+        //如果身份证号码一样就可以进行修改
+        if (truckinfoOne.getDrivingcode().equals(truckinfoDto.getDrivingcode())) {
+            Truckinfo truckinfo = new Truckinfo();
+            BeanUtils.copyProperties(truckinfoDto,truckinfo);
+            truckinfoMapper.update(truckinfo,null);
+            return truckinfoDto;
+        }else {
+            ExceptionCast.cast(CommonCode.NO_TRUCKINFO);
+        }
+        return null;
+    }
+
+    /**
+     * 截取身份证后6位
+     * @param drivingcode
+     * @return
+     */
+    private  String getDrivingCodeAndAfterSix(String drivingcode) {
+        return drivingcode.substring(drivingcode.length()-6,drivingcode.length());
+    }
+
+    /**
+     * 是否身份证已存在
+     * @param truckinfoDTO
+     * @return
+     */
+    private Truckinfo DrivingCodeIsNull(TruckinfoDTO truckinfoDTO) {
+        LambdaQueryWrapper<Truckinfo> truckinfoLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        truckinfoLambdaQueryWrapper.eq(Truckinfo::getDrivingcode,truckinfoDTO.getDrivingcode());
+        Truckinfo truckinfo1 = truckinfoMapper.selectOne(truckinfoLambdaQueryWrapper);
+        return truckinfo1;
+    }
+
+
 }
