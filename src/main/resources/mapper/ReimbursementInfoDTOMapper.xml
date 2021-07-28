@@ -4,6 +4,12 @@
 
     <select id="getReimbursementInfoByLike" parameterType="ReimbursementInfo" resultType="ReimbursementInfo">
         SELECT * FROM reimbursementinfo WHERE 1 = 1
+        <if test="id != null">
+            AND id like #{id}
+        </if>
+        <if test="driving_code != null">
+            AND driving_code like #{driving_code}
+        </if>
         <if test="applicant != null">
             AND applicant like #{applicant}
         </if>
@@ -23,5 +29,9 @@
             AND state like #{state}
         </if>
     </select>
+
+    <update id="reimbursementApproval" parameterType="ReimbursementApprovalInfo">
+        UPDATE reimbursementinfo SET state = #{state} WHERE id = #{id}
+    </update>
 
 </mapper>

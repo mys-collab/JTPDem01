@@ -1,6 +1,7 @@
 package com.jtp7.demo.service;
 
 
+import com.jtp7.demo.entity.ReimbursementApprovalInfo;
 import com.jtp7.demo.entity.ReimbursementInfo;
 
 import java.util.List;
@@ -28,4 +29,12 @@ public interface ReimbursementInfoService {
      * @return int
      */
     Integer claimForReimbursement(ReimbursementInfo reimbursementInfo);
+
+    /**
+     * 根据id来修改审批状态
+     * @param id,state
+     * @return List<ReimbursementInfo>
+     */
+    Integer reimbursementApproval(ReimbursementApprovalInfo reimbursementApprovalInfo);
+
 }

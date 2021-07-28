@@ -1,8 +1,10 @@
 package com.jtp7.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.jtp7.demo.entity.ReimbursementApprovalInfo;
 import com.jtp7.demo.entity.ReimbursementInfo;
 import com.jtp7.demo.entity.Truckinfo;
+import io.swagger.models.auth.In;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,4 +20,6 @@ import java.util.List;
 @Repository
 public interface ReimbursementInfoMapper extends BaseMapper<ReimbursementInfo> {
     List<ReimbursementInfo> getReimbursementInfoByLike(ReimbursementInfo reimbursementInfo);
+
+    Integer reimbursementApproval(ReimbursementApprovalInfo reimbursementApprovalInfo);
 }

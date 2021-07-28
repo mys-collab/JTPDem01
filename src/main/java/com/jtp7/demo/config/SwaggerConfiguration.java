@@ -29,9 +29,9 @@ public class SwaggerConfiguration {
                 .apiInfo(buildApiInfo())
                 .select()
                 // 要扫描的API(Controller)基础包
-                .apis(RequestHandlerSelectors.basePackage("com.jtp7.demo.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.jtp7.demo"))
                 .paths(PathSelectors.any())
-                .build().tags(new Tag(TAG_1,"司机信息接口"));
+                .build().tags(new Tag(TAG_1,"司机信息接口"),new Tag(TAG_2,TAG_2));
     }
 
     /**

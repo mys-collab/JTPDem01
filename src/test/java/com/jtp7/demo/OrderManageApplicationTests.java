@@ -1,5 +1,6 @@
 package com.jtp7.demo;
 
+import com.jtp7.demo.entity.ReimbursementApprovalInfo;
 import com.jtp7.demo.entity.ReimbursementInfo;
 import com.jtp7.demo.service.impl.ReimbursementInfoServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 class OrderManageApplicationTests {
@@ -40,9 +42,18 @@ class OrderManageApplicationTests {
         info.setMoney(2222);
         info.setMonth(8);
         info.setState("已提交");
+        info.setDriving_code("123456789");
 
         Integer integer = infoService.claimForReimbursement(info);
         System.out.println(integer);
     }
 
+    @Test
+    void test02() {
+
+        ReimbursementApprovalInfo reimbursementApprovalInfo = new ReimbursementApprovalInfo(3,"驳回");
+
+        Integer integer = infoService.reimbursementApproval(reimbursementApprovalInfo);
+        System.out.println(integer);
+    }
 }
