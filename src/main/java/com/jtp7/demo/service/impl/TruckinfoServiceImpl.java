@@ -78,7 +78,7 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
         }
 
         Truckinfo truckinfoOne = this.findById(truckinfoDto.getId());
-        if (ObjectUtils.isEmpty(truckinfoOne) || ObjectUtils.isEmpty(truckinfoOne.getDrivingcode())){
+        if (ObjectUtils.isEmpty(truckinfoOne) || ObjectUtils.isEmpty(truckinfoOne.getDrivingcode()) || ObjectUtils.isEmpty(truckinfoDto.getDrivingcode())){
             ExceptionCast.cast(CommonCode.NO_TRUCKINFO);
         }
 
