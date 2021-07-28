@@ -49,4 +49,14 @@ public interface ITruckinfoService {
      * @return
      */
     List<Truckinfo> findbyVersion(int version);
+    /***
+     * 删除用户信息
+     * @param id
+     * @return
+     */
+    int delete(int  id);
+
+
+
+
 }

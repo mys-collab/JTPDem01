@@ -145,5 +145,18 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
         List<Truckinfo> truckinfo1 = truckinfoMapper.selectList(truckinfoLambdaQueryWrapper);
         return truckinfo1;
     }
+    /***
+     * @param id
+     *删除信息
+     *
+     * @return
+     */
+    public int  delete(int  id){
+        int row=truckinfoMapper.deleteById(id);
+        if (row==0){
+            ExceptionCast.cast(CommonCode.NO_TRUCKINFO);
+        }
+        return row;
+    }
 
 }

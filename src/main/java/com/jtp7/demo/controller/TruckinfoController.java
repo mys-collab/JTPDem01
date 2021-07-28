@@ -72,5 +72,14 @@ public class TruckinfoController {
         List<Truckinfo> truckinfo = iTruckinfoService.findByName(name);
         return new ResponseResult(CommonCode.SUCCESS, truckinfo);
     }
+    @PostMapping("deletetruckinfo")
+    @ApiOperation(value="删除司机信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "truckinfoDTO", value = "删除司机信息", required = true, paramType = "path", dataType = "TruckinfoDTO")
+    })
+    public ResponseResult<Object> deleteTruckInfo(@PathVariable("id") int id) {
+        iTruckinfoService.delete(id);
+        return  new ResponseResult<>(CommonCode.YES_ADD_TRUCKINFO);
+    }
 
 }
