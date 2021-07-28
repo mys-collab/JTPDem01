@@ -151,6 +151,7 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
      *
      * @return
      */
+    @Override
     public int  delete(int  id){
         int row=truckinfoMapper.deleteById(id);
         if (row==0){
