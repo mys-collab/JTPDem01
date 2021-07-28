@@ -48,4 +48,11 @@ public interface LorryInfoService {
      */
     Integer deleteById(Integer id);
 
+    /**
+     * 通过状态查询
+     * @param state
+     * @return LorryInfo
+     */
+    List<LorryInfo> getLorryInfoByState(String state);
+
 }

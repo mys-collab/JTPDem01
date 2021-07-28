@@ -72,9 +72,28 @@ public class LorryInfoServiceImpl implements LorryInfoService {
         return lorryInfoMapper.updateById(lorryInfo);
     }
 
+    /**
+     * 删除卡车
+     * @param id
+     * @return Integer
+     */
     @Override
     public Integer deleteById(Integer id) {
         return lorryInfoMapper.deleteById(id);
+    }
+
+    /**
+     * 通过状态查询
+     * @param state
+     * @return LorryInfo
+     */
+    @Override
+    public List<LorryInfo>  getLorryInfoByState(String state) {
+        QueryWrapper<LorryInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("state",state);
+        System.out.println(1);
+        List<LorryInfo>  lorryInfo = lorryInfoMapper.selectList(queryWrapper);
+        return lorryInfo;
     }
 
     /**
@@ -84,7 +103,7 @@ public class LorryInfoServiceImpl implements LorryInfoService {
      */
     private LorryInfo LicenseIsNull(String license) {
         QueryWrapper<LorryInfo> queryWrapper = new QueryWrapper<>();
-        queryWrapper.ge("license",license);
+        queryWrapper.eq("license",license);
         LorryInfo lorryInfo = lorryInfoMapper.selectOne(queryWrapper);
         return lorryInfo;
     }

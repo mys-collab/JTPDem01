@@ -74,4 +74,13 @@ public class LorryInfoController {
         return new ResponseResult(CommonCode.SUCCESS, integer);
     }
 
+    @GetMapping("/getLorryInfoByState/{state}")
+    @ApiOperation(value="根据卡车状态查询")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "state", value = "卡车状态", required = true, paramType = "path", dataType = "String")
+    })
+    public ResponseResult<List<LorryInfo>> getLorryInfoByState(@PathVariable("state")String state) {
+        List<LorryInfo> info = lorryInfoService.getLorryInfoByState(state);
+        return new ResponseResult(CommonCode.SUCCESS, info);
+    }
 }
