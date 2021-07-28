@@ -115,6 +115,7 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
         LambdaQueryWrapper<Truckinfo> truckinfoLambdaQueryWrapper = new LambdaQueryWrapper<>();
         truckinfoLambdaQueryWrapper.eq(Truckinfo::getDrivingcode,truckinfoDTO.getDrivingcode());
         Truckinfo truckinfo1 = truckinfoMapper.selectOne(truckinfoLambdaQueryWrapper);
+
         return truckinfo1;
     }
     /**
@@ -122,6 +123,7 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
      * @param name
      * @return
      */
+    @Override
     public List<Truckinfo> findByName(String name) {
 
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -130,4 +132,18 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
         List<Truckinfo> truckinfoList = truckinfoMapper.selectList(queryWrapper);
         return truckinfoList;
     }
+
+    /**
+     * 查询司机状态为在岗的信息
+     * @param version
+     * @return
+     */
+    @Override
+    public Truckinfo findbyVersion(int version) {
+        LambdaQueryWrapper<Truckinfo> truckinfoLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        truckinfoLambdaQueryWrapper.eq(Truckinfo::getVersion,version);
+        Truckinfo truckinfo1 = truckinfoMapper.selectOne(truckinfoLambdaQueryWrapper);
+        return truckinfo1;
+    }
+
 }
