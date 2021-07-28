@@ -21,7 +21,7 @@ public class SwaggerConfiguration {
 
     public static final String TAG_1 = "司机信息接口";
     public static final String TAG_2 = "报销申请信息接口";
-    public static final String TAG_3 = "卡车信息接口";
+    public static final String TAG_3 = "订单信息接口";
 
     @Bean
     public Docket buildDocket() {
@@ -29,9 +29,9 @@ public class SwaggerConfiguration {
                 .apiInfo(buildApiInfo())
                 .select()
                 // 要扫描的API(Controller)基础包
-                .apis(RequestHandlerSelectors.basePackage("com.jtp7.demo"))
+                .apis(RequestHandlerSelectors.basePackage("com.jtp7.demo.controller"))
                 .paths(PathSelectors.any())
-                .build().tags(new Tag(TAG_1,"司机信息接口"),new Tag(TAG_2,TAG_2),new Tag(TAG_3,TAG_3));
+                .build().tags(new Tag(TAG_1,"司机信息接口"),new Tag(TAG_3,"订单信息接口"));
     }
 
     /**

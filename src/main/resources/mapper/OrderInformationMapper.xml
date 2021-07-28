@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jtp7.demo.mapper.OrderInformationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jtp7.demo.entity.OrderInformation">
+        <id column="order_id" property="orderId" />
+        <result column="address" property="address" />
+        <result column="gap" property="gap" />
+        <result column="date" property="date" />
+        <result column="time" property="time" />
+        <result column="driver" property="driver" />
+        <result column="truck" property="truck" />
+        <result column="is_compensate" property="isCompensate" />
+        <result column="compensate" property="compensate" />
+        <result column="total" property="total" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        order_id, address, 
+gap, date, time, driver, truck, is_compensate, compensate, total
+    </sql>
+
+</mapper>
