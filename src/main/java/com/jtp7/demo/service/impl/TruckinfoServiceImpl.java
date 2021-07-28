@@ -1,6 +1,7 @@
 package com.jtp7.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jtp7.demo.entity.Truckinfo;
 import com.jtp7.demo.entity.response.CommonCode;
 import com.jtp7.demo.entity.tdo.TruckinfoDTO;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
+
+import java.util.List;
 
 /**
  * <p>
@@ -114,6 +117,15 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
         Truckinfo truckinfo1 = truckinfoMapper.selectOne(truckinfoLambdaQueryWrapper);
         return truckinfo1;
     }
-
-
+    /**
+     * 按司机姓名进行模糊搜索
+     * @param name
+     * @return
+     */
+    public List<Truckinfo> findByName(String name) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.like("name", name);
+        List<Truckinfo> truckinfoList = truckinfoMapper.selectList(queryWrapper);
+        return truckinfoList;
+    }
 }

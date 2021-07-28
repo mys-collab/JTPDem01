@@ -15,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  * 前端控制器
@@ -59,6 +61,16 @@ public class TruckinfoController {
     public ResponseResult<Object> updataTruckInfo(@RequestBody TruckinfoDTO truckinfoDTO) {
        iTruckinfoService.update(truckinfoDTO);
         return  new ResponseResult<>(CommonCode.YES_ADD_TRUCKINFO);
+    }
+
+    @GetMapping("/selectTruckinfoByName/{name}")
+    @ApiOperation(value="根据姓名查询司机信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "name", value = "用户的name", required = true, paramType = "path", dataType = "String")
+    })
+    public ResponseResult<Truckinfo> findById(@PathVariable("name") String name) {
+        List<Truckinfo> truckinfo = iTruckinfoService.findByName(name);
+        return new ResponseResult(CommonCode.SUCCESS, truckinfo);
     }
 
 }
