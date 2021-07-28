@@ -57,7 +57,7 @@ public class TruckinfoController {
             @ApiImplicitParam(name = "truckinfoDTO", value = "修改司机信息", required = true, paramType = "body", dataType = "TruckinfoDTO")
     })
     public ResponseResult<Object> updataTruckInfo(@RequestBody TruckinfoDTO truckinfoDTO) {
-       iTruckinfoService.update(truckinfoDTO);
+        iTruckinfoService.update(truckinfoDTO);
         return  new ResponseResult<>(CommonCode.YES_ADD_TRUCKINFO);
     }
 

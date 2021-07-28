@@ -46,7 +46,7 @@ public class ReimbursementInfoServiceImpl implements ReimbursementInfoService {
     }
 
     /**
-     * 报销申请
+     * 报销申请提交
      * @param reimbursementInfo
      * @return int
      */
@@ -62,7 +62,7 @@ public class ReimbursementInfoServiceImpl implements ReimbursementInfoService {
     }
 
     /**
-     * 根据id来修改审批状态
+     * 报销审批
      * @param reimbursementApprovalInfo
      * @return List<ReimbursementInfo>
      */

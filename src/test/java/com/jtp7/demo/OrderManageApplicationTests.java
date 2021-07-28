@@ -1,7 +1,9 @@
 package com.jtp7.demo;
 
+import com.jtp7.demo.entity.LorryInfo;
 import com.jtp7.demo.entity.ReimbursementApprovalInfo;
 import com.jtp7.demo.entity.ReimbursementInfo;
+import com.jtp7.demo.service.impl.LorryInfoServiceImpl;
 import com.jtp7.demo.service.impl.ReimbursementInfoServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import java.util.Map;
 class OrderManageApplicationTests {
     @Autowired
     ReimbursementInfoServiceImpl infoService;
+    @Autowired
+    LorryInfoServiceImpl lorryInfoService;
 
     @Test
     void contextLoads() {
@@ -55,5 +59,44 @@ class OrderManageApplicationTests {
 
         Integer integer = infoService.reimbursementApproval(reimbursementApprovalInfo);
         System.out.println(integer);
+    }
+
+    @Test
+    void test03() {
+
+        LorryInfo lorryInfo = new LorryInfo(1, "aaa", "1");
+
+        List<LorryInfo> integer = lorryInfoService.getLorryInfoByLike(lorryInfo);
+        integer.forEach(a->{
+            System.out.println(a);
+        });
+    }
+
+    @Test
+    void test04() {
+
+        LorryInfo lorryInfo = new LorryInfo(1, "aaa", "1");
+
+        Integer add = lorryInfoService.add(lorryInfo);
+        System.out.println(add);
+
+    }
+
+    @Test
+    void test05() {
+
+        LorryInfo lorryInfo = new LorryInfo(1, "aaaa", "1");
+
+        Integer update = lorryInfoService.updateById(lorryInfo);
+        System.out.println(update);
+
+    }
+
+    @Test
+    void test06() {
+
+        Integer delete = lorryInfoService.deleteById(1);
+        System.out.println(delete);
+
     }
 }

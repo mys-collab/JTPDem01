@@ -17,22 +17,23 @@ import java.util.List;
 public interface ReimbursementInfoService {
 
     /**
-     * 根据id查询
+     * 根据全字段模糊查询，字段为空是默认查询所有
+     *
      * @param reimbursementInfo
      * @return List<ReimbursementInfo>
      */
     List<ReimbursementInfo> getReimbursementInfoByLike(ReimbursementInfo reimbursementInfo);
 
     /**
-     * 报销申请
+     * 报销申请提交
      * @param reimbursementInfo
      * @return int
      */
     Integer claimForReimbursement(ReimbursementInfo reimbursementInfo);
 
     /**
-     * 根据id来修改审批状态
-     * @param id,state
+     * 报销审批
+     * @param reimbursementApprovalInfo
      * @return List<ReimbursementInfo>
      */
     Integer reimbursementApproval(ReimbursementApprovalInfo reimbursementApprovalInfo);
