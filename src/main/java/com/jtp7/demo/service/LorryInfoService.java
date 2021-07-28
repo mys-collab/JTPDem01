@@ -30,20 +30,21 @@ public interface LorryInfoService {
     /**
      * 新增卡车
      * @param lorryInfo
+     * return Integer
      */
     Integer add(LorryInfo lorryInfo);
 
     /**
      * 修改卡车
      * @param lorryInfo
-     * @return
+     * @return Integer
      */
     Integer updateById(LorryInfo lorryInfo);
 
     /**
      * 删除卡车
      * @param id
-     * @return
+     * @return Integer
      */
     Integer deleteById(Integer id);
 
