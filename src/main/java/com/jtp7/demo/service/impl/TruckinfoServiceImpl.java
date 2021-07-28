@@ -123,7 +123,9 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
      * @return
      */
     public List<Truckinfo> findByName(String name) {
+
         QueryWrapper queryWrapper = new QueryWrapper();
+
         queryWrapper.like("name", name);
         List<Truckinfo> truckinfoList = truckinfoMapper.selectList(queryWrapper);
         return truckinfoList;
