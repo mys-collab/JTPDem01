@@ -1,5 +1,6 @@
 package com.jtp7.demo.service.impl;
 
+import com.jtp7.demo.entity.ReimbursementApprovalInfo;
 import com.jtp7.demo.entity.ReimbursementInfo;
 import com.jtp7.demo.entity.response.CommonCode;
 import com.jtp7.demo.exception.ExceptionCast;
@@ -44,11 +45,30 @@ public class ReimbursementInfoServiceImpl implements ReimbursementInfoService {
         return reimbursementInfoList;
     }
 
+    /**
+     * 报销申请
+     * @param reimbursementInfo
+     * @return int
+     */
     @Override
     public Integer claimForReimbursement(ReimbursementInfo reimbursementInfo) {
         //默认申请时间
         reimbursementInfo.setApplicationTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         Integer result = reimbursementInfoMapper.insert(reimbursementInfo);
+        if (result == 0) {
+            ExceptionCast.cast(CommonCode.FAIL);
+        }
+        return result;
+    }
+
+    /**
+     * 根据id来修改审批状态
+     * @param reimbursementApprovalInfo
+     * @return List<ReimbursementInfo>
+     */
+    @Override
+    public Integer reimbursementApproval(ReimbursementApprovalInfo reimbursementApprovalInfo) {
+        Integer result = reimbursementInfoMapper.reimbursementApproval(reimbursementApprovalInfo);
         if (result == 0) {
             ExceptionCast.cast(CommonCode.FAIL);
         }
