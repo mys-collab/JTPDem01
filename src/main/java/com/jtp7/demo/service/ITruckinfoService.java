@@ -4,6 +4,8 @@ package com.jtp7.demo.service;
 import com.jtp7.demo.entity.Truckinfo;
 import com.jtp7.demo.entity.tdo.TruckinfoDTO;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -33,4 +35,11 @@ public interface ITruckinfoService {
      * @return
      */
      TruckinfoDTO update(TruckinfoDTO truckinfo );
+
+    /**
+     * 按司机姓名进行模糊搜索
+     * @param name
+     * @return
+     */
+    List<Truckinfo> findByName(String name);
 }
