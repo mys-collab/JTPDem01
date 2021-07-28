@@ -42,4 +42,11 @@ public interface ITruckinfoService {
      * @return
      */
     List<Truckinfo> findByName(String name);
+
+    /**
+     * 查询司机状态为在岗的信息
+     * @param version
+     * @return
+     */
+    Truckinfo findbyVersion(int version);
 }
