@@ -20,8 +20,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfiguration {
 
     public static final String TAG_1 = "司机信息接口";
-    public static final String TAG_2 = "";
-    public static final String TAG_3 = "";
+    public static final String TAG_2 = "报销申请信息接口";
+    public static final String TAG_3 = "卡车信息接口";
 
     @Bean
     public Docket buildDocket() {
@@ -31,7 +31,7 @@ public class SwaggerConfiguration {
                 // 要扫描的API(Controller)基础包
                 .apis(RequestHandlerSelectors.basePackage("com.jtp7.demo"))
                 .paths(PathSelectors.any())
-                .build().tags(new Tag(TAG_1,"司机信息接口"));
+                .build().tags(new Tag(TAG_1,"司机信息接口"),new Tag(TAG_2,TAG_2),new Tag(TAG_3,TAG_3));
     }
 
     /**

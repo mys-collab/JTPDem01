@@ -14,7 +14,14 @@ public enum CommonCode implements ResultCode{
     FAIL(false,11111,"操作失败！"),
     UNAUTHENTICATED(false,10001,"此操作需要登陆系统!"),
     UNAUTHORISE(false,10002,"权限不足，无权操作！"),
-    SERVER_ERROR(false,99999,"抱歉，系统繁忙，请稍后重试！");
+    NO_ADD_TRUCKINFO(false,10003,"该司机已存在！"),
+    YES_ADD_TRUCKINFO(true,10004,"保存成功！"),
+     DRIVINGCODE_ISNULL(false,10005,"身份证号为空"),
+     NO_TRUCKINFO(false,10006,"还没有该用户"),
+    SERVER_ERROR(false,99999,"抱歉，系统繁忙，请稍后重试！"),
+    NO_ADD_LORRY(false,10003,"该车牌已存在！"),
+    YES_ADD_LORRYINFO(true,10004,"保存成功！");
+
 
     //操作是否成功
     boolean success;
