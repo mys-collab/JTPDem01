@@ -34,7 +34,6 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
      * 根据id查询
      *
      * @param id
-     * @return
      */
     @Override
     public Truckinfo findById(int id) {
@@ -49,7 +48,6 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
     /**
      * 新增用户
      *
-     * @param truckinfoDTO
      */
     @Override
     public TruckinfoDTO add(TruckinfoDTO truckinfoDTO) {
@@ -60,10 +58,19 @@ public class TruckinfoServiceImpl implements ITruckinfoService {
 
         Truckinfo truckinfo = new Truckinfo();
         BeanUtils.copyProperties(truckinfoDTO,truckinfo);
+
+        String code = this.getDrivingCodeAndAfterSix(truckinfoDTO.getDrivingcode());
+        truckinfo.setUsername(code);
+        truckinfo.setVersion(0);
         truckinfoMapper.insert(truckinfo);
         return truckinfoDTO;
     }
 
+    /**
+     * 修改司机信息
+     * @param truckinfoDto
+     * @return
+     */
     @Override
     public TruckinfoDTO update(TruckinfoDTO truckinfoDto ){
         if (ObjectUtils.isEmpty(truckinfoDto.getDrivingcode())){
