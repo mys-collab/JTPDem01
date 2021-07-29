@@ -11,14 +11,14 @@ drop table if exists truckinfo;
 /*==============================================================*/
 create table truckinfo
 (
-   id                   int not null auto_increment comment '唯一id',
-   DrivingCode          varchar(12) comment '驾驶证号',
-   name                 varchar(12) comment '姓名',
-   phone                varchar(11) comment '电话',
-   username             varchar(12) comment '用户名 默认为驾驶证号后6位',
+   id                   varchar(32) not null  comment '唯一id',
+   drivingCode          varchar(12) not null  comment '驾驶证号',
+   name                 varchar(12) not null comment '姓名',
+   phone                varchar(11) not null  comment '电话',
+   username             varchar(12) not null comment '用户名 默认为驾驶证号后6位',
    password             varchar(12) default '123456' comment '密码',
    email                varchar(16) comment '邮箱',
-   version              int default 0 comment '状态:0：在岗，1：不在岗，默认在岗',
+   version              int default not null 0 comment '状态:0：在岗，1：不在岗，默认在岗',
    primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

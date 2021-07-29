@@ -10,20 +10,20 @@ import java.io.Serializable;
 
 @Data
 @ApiModel(value="TruckinfoDTO", description="司机信息dto表")
-public class TruckinfoDTO implements Serializable {
+public class TruckInfoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "用户id")
-    private Integer id;
+    private String id;
 
-    @ApiModelProperty(value = "驾驶证号")
-    private String drivingcode;
+    @ApiModelProperty(value = "驾驶证号",required = true , dataType = "String")
+    private String drivingCode;
 
-    @ApiModelProperty(value = "姓名")
+    @ApiModelProperty(value = "姓名",required = true , dataType = "String")
     private String name;
 
-    @ApiModelProperty(value = "电话")
+    @ApiModelProperty(value = "电话", required = true , dataType = "String")
     private String phone;
 
     @ApiModelProperty(value = "用户名 默认为驾驶证号后6位")
@@ -32,7 +32,7 @@ public class TruckinfoDTO implements Serializable {
     @ApiModelProperty(value = "密码")
     private String password;
 
-    @ApiModelProperty(value = "邮箱")
+    @ApiModelProperty(value = "邮箱", required = true , dataType = "String")
     private String email;
 
 

@@ -1,6 +1,7 @@
 package com.jtp7.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -9,20 +10,21 @@ import java.io.Serializable;
 
 @Data
 @TableName("truckinfo")
-public class Truckinfo implements Serializable {
+public class TruckInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 唯一id
      */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    private String id;
 
     /**
      * 驾驶证号
      */
-    private String drivingcode;
+    @TableField(value="drivingCode")
+    private String drivingCode;
 
     /**
      * 姓名
