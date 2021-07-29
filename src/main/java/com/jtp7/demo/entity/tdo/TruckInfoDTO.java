@@ -9,7 +9,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-@ApiModel(value="TruckinfoDTO", description="司机信息dto表")
+@ApiModel(value="TruckInfoDTO", description="司机信息dto表")
 public class TruckInfoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
