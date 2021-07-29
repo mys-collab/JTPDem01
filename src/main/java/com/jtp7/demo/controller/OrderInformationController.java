@@ -41,6 +41,15 @@ public class OrderInformationController {
         return new ResponseResult(CommonCode.SUCCESS, allOrders);
     }
 
+    @PostMapping("/getOrderByLike")
+    @ApiOperation(value = "根据全字段查询订单信息，为空时查询所有")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "orderInformation", value = "订单信息", required = true, paramType = "body", dataType = "OrderInformation")
+    })
+    public ResponseResult<List<OrderInformation>> getOrderByLike(@RequestBody OrderInformation orderInformation){
+        List<OrderInformation> information = iOrderInformationService.getOrderByLike(orderInformation);
+        return new ResponseResult<List<OrderInformation>>(CommonCode.SUCCESS,information);
+    }
 
     @PostMapping("/updateOrder")
     @ApiOperation(value="修改订单信息")

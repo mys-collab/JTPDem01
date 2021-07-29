@@ -27,4 +27,6 @@ public interface IOrderInformationService{
     int delete(int id);
 
     OrderInfoDTO add(OrderInfoDTO orderInfoDTO);
+
+    List<OrderInformation> getOrderByLike(OrderInformation orderInformation);
 }

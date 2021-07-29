@@ -136,4 +136,19 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
         }
         return null;
     }
+
+    /**
+     * 全字段模糊查询
+     *
+     * @param orderInformation
+     * @return
+     */
+    @Override
+    public List<OrderInformation> getOrderByLike(OrderInformation orderInformation) {
+        List<OrderInformation> information=orderInformationMapper.getOrderByLike(orderInformation);
+        if (information == null ) {
+            ExceptionCast.cast(CommonCode.FAIL);
+        }
+        return information;
+    }
 }
