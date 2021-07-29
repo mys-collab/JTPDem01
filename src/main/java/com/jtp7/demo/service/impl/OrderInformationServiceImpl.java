@@ -2,13 +2,13 @@ package com.jtp7.demo.service.impl;
 
 import com.jtp7.demo.entity.LorryInfo;
 import com.jtp7.demo.entity.OrderInformation;
-import com.jtp7.demo.entity.Truckinfo;
+import com.jtp7.demo.entity.TruckInfo;
 import com.jtp7.demo.entity.response.CommonCode;
 import com.jtp7.demo.entity.tdo.orderInfoDTO;
 import com.jtp7.demo.exception.ExceptionCast;
 import com.jtp7.demo.mapper.OrderInformationMapper;
 import com.jtp7.demo.service.IOrderInformationService;
-import com.jtp7.demo.service.ITruckinfoService;
+import com.jtp7.demo.service.ITruckInfoService;
 import com.jtp7.demo.service.LorryInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -36,12 +36,12 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
     private OrderInformationMapper orderInformationMapper;
 
     @Autowired
-    private ITruckinfoService iTruckinfoService;
+    private ITruckInfoService iTruckinfoService;
 
     @Autowired
     private LorryInfoService lorryInfoService;
 
-    List<Truckinfo> truckinfos;
+    List<TruckInfo> truckinfos;
     BigDecimal Compensate;
     int i = 0;
 
@@ -60,7 +60,7 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
 
         if(orderInfoDTO.getDate() != null){
 
-            truckinfos = iTruckinfoService.findbyVersion(0);
+            truckinfos = iTruckinfoService.findByVersion(0);
             if (truckinfos.isEmpty()){
                 ExceptionCast.cast(CommonCode.FAIL_ORDER_TRUCK);
             }
@@ -94,7 +94,7 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
     public orderInfoDTO add(orderInfoDTO orderInfoDTO) {
         if(orderInfoDTO.getDate() != null){
 
-            truckinfos = iTruckinfoService.findbyVersion(0);
+            truckinfos = iTruckinfoService.findByVersion(0);
             if (truckinfos.isEmpty()){
                 ExceptionCast.cast(CommonCode.FAIL_ORDER_TRUCK);
             }

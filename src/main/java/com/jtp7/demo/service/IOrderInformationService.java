@@ -1,7 +1,6 @@
 package com.jtp7.demo.service;
 
 import com.jtp7.demo.entity.OrderInformation;
-import com.jtp7.demo.entity.tdo.TruckinfoDTO;
 import com.jtp7.demo.entity.tdo.orderInfoDTO;
 
 import java.util.List;

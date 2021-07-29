@@ -3,10 +3,8 @@ package com.jtp7.demo.controller;
 
 import com.jtp7.demo.config.SwaggerConfiguration;
 import com.jtp7.demo.entity.OrderInformation;
-import com.jtp7.demo.entity.Truckinfo;
 import com.jtp7.demo.entity.response.CommonCode;
 import com.jtp7.demo.entity.response.ResponseResult;
-import com.jtp7.demo.entity.tdo.TruckinfoDTO;
 import com.jtp7.demo.entity.tdo.orderInfoDTO;
 import com.jtp7.demo.service.IOrderInformationService;
 import io.swagger.annotations.Api;
@@ -15,7 +13,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
