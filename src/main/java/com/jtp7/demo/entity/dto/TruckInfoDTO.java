@@ -1,7 +1,5 @@
-package com.jtp7.demo.entity.tdo;
+package com.jtp7.demo.entity.dto;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

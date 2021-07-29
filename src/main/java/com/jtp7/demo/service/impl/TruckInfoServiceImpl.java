@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jtp7.demo.entity.TruckInfo;
 import com.jtp7.demo.entity.response.CommonCode;
-import com.jtp7.demo.entity.tdo.TruckInfoDTO;
+import com.jtp7.demo.entity.dto.TruckInfoDTO;
 import com.jtp7.demo.exception.ExceptionCast;
 import com.jtp7.demo.mapper.TruckInfoMapper;
 import com.jtp7.demo.service.ITruckInfoService;

@@ -2,7 +2,7 @@ package com.jtp7.demo.service;
 
 
 import com.jtp7.demo.entity.TruckInfo;
-import com.jtp7.demo.entity.tdo.TruckInfoDTO;
+import com.jtp7.demo.entity.dto.TruckInfoDTO;
 
 import java.util.List;
 

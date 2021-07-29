@@ -4,7 +4,7 @@ import com.jtp7.demo.entity.LorryInfo;
 import com.jtp7.demo.entity.OrderInformation;
 import com.jtp7.demo.entity.TruckInfo;
 import com.jtp7.demo.entity.response.CommonCode;
-import com.jtp7.demo.entity.tdo.orderInfoDTO;
+import com.jtp7.demo.entity.dto.OrderInfoDTO;
 import com.jtp7.demo.exception.ExceptionCast;
 import com.jtp7.demo.mapper.OrderInformationMapper;
 import com.jtp7.demo.service.IOrderInformationService;
@@ -29,7 +29,7 @@ import java.util.List;
  */
 @Slf4j
 @Service
-@Transactional
+@Transactional(rollbackFor = {RuntimeException.class,Exception.class})
 public class OrderInformationServiceImpl implements IOrderInformationService {
 
     @Autowired
@@ -45,6 +45,11 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
     BigDecimal Compensate;
     int i = 0;
 
+    /**
+     * 查询所有订单
+     *
+     * @return
+     */
     @Override
     public List<OrderInformation> findAllOrders() {
         List<OrderInformation> orderInformations = orderInformationMapper.selectList(null);
@@ -54,9 +59,14 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
         return orderInformations;
     }
 
-
+    /**
+     * 对订单更新
+     *
+     * @param orderInfoDTO
+     * @return
+     */
     @Override
-    public orderInfoDTO update(orderInfoDTO orderInfoDTO) {
+    public OrderInfoDTO update(OrderInfoDTO orderInfoDTO) {
 
         if(orderInfoDTO.getDate() != null){
 
@@ -81,6 +91,12 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
         return null;
     }
 
+    /**
+     *根据订单id删除订单
+     *
+     * @param id
+     * @return
+     */
     @Override
     public int delete(int id) {
         int row=orderInformationMapper.deleteById(id);
@@ -90,8 +106,14 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
         return row;
     }
 
+    /**
+     * 增加一条订单
+     *
+     * @param orderInfoDTO
+     * @return
+     */
     @Override
-    public orderInfoDTO add(orderInfoDTO orderInfoDTO) {
+    public OrderInfoDTO add(OrderInfoDTO orderInfoDTO) {
         if(orderInfoDTO.getDate() != null){
 
             truckinfos = iTruckinfoService.findByVersion(0);

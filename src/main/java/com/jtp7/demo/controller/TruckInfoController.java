@@ -5,7 +5,7 @@ import com.jtp7.demo.config.SwaggerConfiguration;
 import com.jtp7.demo.entity.TruckInfo;
 import com.jtp7.demo.entity.response.CommonCode;
 import com.jtp7.demo.entity.response.ResponseResult;
-import com.jtp7.demo.entity.tdo.TruckInfoDTO;
+import com.jtp7.demo.entity.dto.TruckInfoDTO;
 import com.jtp7.demo.service.ITruckInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

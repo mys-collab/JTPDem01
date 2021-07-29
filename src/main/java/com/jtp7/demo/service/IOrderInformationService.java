@@ -1,7 +1,7 @@
 package com.jtp7.demo.service;
 
 import com.jtp7.demo.entity.OrderInformation;
-import com.jtp7.demo.entity.tdo.orderInfoDTO;
+import com.jtp7.demo.entity.dto.OrderInfoDTO;
 
 import java.util.List;
 
@@ -22,9 +22,9 @@ public interface IOrderInformationService{
      */
     List<OrderInformation> findAllOrders();
 
-    orderInfoDTO update(orderInfoDTO orderInfoDTO);
+    OrderInfoDTO update(OrderInfoDTO orderInfoDTO);
 
     int delete(int id);
 
-    orderInfoDTO add(orderInfoDTO orderInfoDTO);
+    OrderInfoDTO add(OrderInfoDTO orderInfoDTO);
 }

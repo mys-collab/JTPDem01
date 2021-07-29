@@ -1,5 +1,6 @@
-package com.jtp7.demo.entity.tdo;
+package com.jtp7.demo.entity.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -13,13 +14,10 @@ import java.time.LocalDate;
  * @date 2021/7/28
  */
 @Data
-@ApiModel(value="orderInfoDTO", description="订单信息DTO表")
-public class orderInfoDTO implements Serializable {
+@ApiModel(value="OrderInfoDTO", description="订单信息DTO表")
+public class OrderInfoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "订单id")
-    private Integer orderId;
 
     @ApiModelProperty(value = "送货地址")
     private String address;
@@ -28,6 +26,7 @@ public class orderInfoDTO implements Serializable {
     private Integer gap;
 
     @ApiModelProperty(value = "送货日期")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private LocalDate date;
 
     @ApiModelProperty(value = "送货时间")
