@@ -42,17 +42,17 @@ public class TruckInfoController {
 
     @PostMapping("addTruckInfo")
     @ApiOperation(value="新增司机")
-    @ApiImplicitParam(name = "TruckInfoDTO", value = "新增司机信息", required = true, paramType = "body", dataType = "TruckInfoDTO")
-    public ResponseResult<Object> addTruckInfo(@RequestBody TruckInfoDTO TruckInfoDTO) {
-       iTruckInfoService.add(TruckInfoDTO);
+    @ApiImplicitParam(name = "truckInfoDTO", value = "新增司机信息", required = true, paramType = "body", dataType = "TruckInfoDTO")
+    public ResponseResult<Object> addTruckInfo(@RequestBody TruckInfoDTO truckInfoDTO) {
+       iTruckInfoService.add(truckInfoDTO);
         return  new ResponseResult<>(CommonCode.YES_ADD_TRUCKINFO);
     }
 
     @PostMapping("updateTruckInfo")
     @ApiOperation(value="修改司机信息")
-    @ApiImplicitParam(name = "TruckInfoDTO", value = "修改司机信息", required = true, paramType = "body", dataType = "TruckInfoDTO")
-    public ResponseResult<Object> updateTruckInfo(@RequestBody TruckInfoDTO TruckInfoDTO) {
-        iTruckInfoService.update(TruckInfoDTO);
+    @ApiImplicitParam(name = "truckInfoDTO", value = "修改司机信息", required = true, paramType = "body", dataType = "TruckInfoDTO")
+    public ResponseResult<Object> updateTruckInfo(@RequestBody TruckInfoDTO truckInfoDTO) {
+        iTruckInfoService.update(truckInfoDTO);
         return  new ResponseResult<>(CommonCode.YES_ADD_TRUCKINFO);
     }
 
