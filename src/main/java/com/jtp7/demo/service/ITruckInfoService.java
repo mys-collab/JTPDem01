@@ -1,8 +1,8 @@
 package com.jtp7.demo.service;
 
 
-import com.jtp7.demo.entity.Truckinfo;
-import com.jtp7.demo.entity.tdo.TruckinfoDTO;
+import com.jtp7.demo.entity.TruckInfo;
+import com.jtp7.demo.entity.tdo.TruckInfoDTO;
 
 import java.util.List;
 
@@ -14,47 +14,47 @@ import java.util.List;
  * @author author
  * @since 2021-07-27
  */
-public interface ITruckinfoService {
+public interface ITruckInfoService {
 
     /**
      * 根据id查询
      * @param id
      * @return
      */
-    Truckinfo findById(int id);
+    TruckInfo findById(String id);
 
     /**
      * 新增用户
-     * @param truckinfo
+     * @param truckInfo
      */
-    TruckinfoDTO add(TruckinfoDTO truckinfo);
+    TruckInfoDTO add(TruckInfoDTO truckInfo);
 
     /**
      * 修改用户信息
-     * @param truckinfo
+     * @param truckInfo
      * @return
      */
-     TruckinfoDTO update(TruckinfoDTO truckinfo );
+     TruckInfoDTO update(TruckInfoDTO truckInfo );
 
     /**
      * 按司机姓名进行模糊搜索
      * @param name
      * @return
      */
-    List<Truckinfo> findByName(String name);
+    List<TruckInfo> findByName(String name);
 
     /**
      * 查询司机状态为在岗的信息
      * @param version
      * @return
      */
-    List<Truckinfo> findbyVersion(int version);
+    List<TruckInfo> findByVersion(int version);
     /***
      * 删除用户信息
      * @param id
      * @return
      */
-    int delete(int  id);
+    int delete(String  id);
 
 
 

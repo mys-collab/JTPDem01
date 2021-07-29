@@ -3,8 +3,6 @@ package com.jtp7.demo.controller;
 
 import com.jtp7.demo.config.SwaggerConfiguration;
 import com.jtp7.demo.entity.LorryInfo;
-import com.jtp7.demo.entity.ReimbursementInfo;
-import com.jtp7.demo.entity.Truckinfo;
 import com.jtp7.demo.entity.response.CommonCode;
 import com.jtp7.demo.entity.response.ResponseResult;
 import com.jtp7.demo.service.LorryInfoService;
