@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jtp7.demo.mapper.LorryInfoMapper">
+
+    <select id="getLorryInfoByLike" parameterType="LorryInfo" resultType="LorryInfo">
+        SELECT * FROM lorryinfo WHERE 1 = 1
+        <if test="id != null">
+            AND id like #{id}
+        </if>
+        <if test="license != null">
+            AND license like #{license}
+        </if>
+        <if test="state != null">
+            AND state like #{state}
+        </if>
+    </select>
+</mapper>
