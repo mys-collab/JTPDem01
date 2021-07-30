@@ -40,6 +40,11 @@ public class LorryInfoController {
     })
     public ResponseResult<List<LorryInfo>> getLorryInfoByLike(@RequestBody LorryInfo lorryInfo){
         List<LorryInfo> lorryInfoByLike = lorryInfoService.getLorryInfoByLike(lorryInfo);
+
+        lorryInfoByLike.forEach((a)->{
+            System.out.println(a);
+        });
+
         return new ResponseResult<List<LorryInfo>>(CommonCode.SUCCESS,lorryInfoByLike);
     }
 
