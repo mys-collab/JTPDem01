@@ -22,7 +22,7 @@
 gap, date, time, driver, truck, is_compensate, compensate, total
     </sql>
 
-    <select id="getOrderByLike" parameterType="OrderInformation" resultType="OrderInformation">
+    <select id="getOrderByLike" parameterType="com.jtp7.demo.entity.OrderInformation" resultType="com.jtp7.demo.entity.OrderInformation">
         SELECT * FROM order_information WHERE 1 = 1
         <if test="orderId != null">
             AND order_id like concat('%',#{orderId},'%')
