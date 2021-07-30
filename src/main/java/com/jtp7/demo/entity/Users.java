@@ -1,5 +1,8 @@
 package com.jtp7.demo.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.sun.javafx.beans.IDProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +17,7 @@ import java.util.List;
 public class Users implements Serializable {
 
     private Integer id;
+    @TableId(type = IdType.AUTO)
     private String username;
     private String password;
     private Integer position;

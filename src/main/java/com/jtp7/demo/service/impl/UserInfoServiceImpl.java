@@ -31,7 +31,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public int deleteUserById(Users users) {
-        return usersMapper.updateById(users);
+        return usersMapper.deleteById(users);
     }
 
     @Override
