@@ -56,8 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/success.html").permitAll()  //登录成功之后，跳转路径
                 .failureUrl("/unauth.html")
                 .and().authorizeRequests()
-                .antMatchers("/","/test/hello","/user/login").permitAll() //设置哪些路径可以直接访问，不需要认证
-                .antMatchers("/test/index").hasRole("sale")
+                .antMatchers("/**").permitAll() //设置哪些路径可以直接访问，不需要认证
                 .anyRequest().authenticated()
                 .and().rememberMe().tokenRepository(persistentTokenRepository())
                 .tokenValiditySeconds(60)//设置有效时长，单位秒
