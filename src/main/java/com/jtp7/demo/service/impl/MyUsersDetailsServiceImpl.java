@@ -23,6 +23,8 @@ public class MyUsersDetailsServiceImpl implements MyUsersDetailsService {
 
         @Override
         public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+
             //调用usersMapper方法，根据用户名查询数据库
             QueryWrapper<Users> wrapper = new QueryWrapper();
             // where username=?

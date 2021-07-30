@@ -37,6 +37,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
+                .withUser("jtp7").password(new BCryptPasswordEncoder().encode("123456"));//默认用户
+
         auth.userDetailsService(userDetailsService).passwordEncoder(password());
     }
     @Bean
@@ -46,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
 
 
         //配置没有权限访问跳转自定义页面
