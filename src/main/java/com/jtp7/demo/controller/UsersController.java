@@ -22,6 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 @Api(value = "用户信息表", tags = {SwaggerConfiguration.TAG_5})
 public class UsersController {
 
