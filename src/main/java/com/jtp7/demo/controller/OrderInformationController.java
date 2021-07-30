@@ -3,11 +3,9 @@ package com.jtp7.demo.controller;
 
 import com.jtp7.demo.config.SwaggerConfiguration;
 import com.jtp7.demo.entity.OrderInformation;
-import com.jtp7.demo.entity.Truckinfo;
 import com.jtp7.demo.entity.response.CommonCode;
 import com.jtp7.demo.entity.response.ResponseResult;
-import com.jtp7.demo.entity.tdo.TruckinfoDTO;
-import com.jtp7.demo.entity.tdo.orderInfoDTO;
+import com.jtp7.demo.entity.dto.OrderInfoDTO;
 import com.jtp7.demo.service.IOrderInformationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -15,7 +13,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,11 +27,12 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@Api(value = "订单信息表", tags = {SwaggerConfiguration.TAG_3})
+@Api(value = "订单信息表", tags = {SwaggerConfiguration.TAG_4})
 public class OrderInformationController {
 
     @Autowired
     private IOrderInformationService iOrderInformationService;
+
 
     @GetMapping("/findAllOrders")
     @ApiOperation(value="查询所有订单信息")
@@ -43,33 +41,45 @@ public class OrderInformationController {
         return new ResponseResult(CommonCode.SUCCESS, allOrders);
     }
 
-    @PostMapping("/updateOrderInfo")
-    @ApiOperation(value="修改订单信息")
+    @PostMapping("/getOrderByLike")
+    @ApiOperation(value = "根据全字段查询订单信息，为空时查询所有")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "orderInfoDTO", value = "修改订单信息", required = true, paramType = "body", dataType = "orderInfoDTO")
+            @ApiImplicitParam(name = "orderInformation", value = "订单信息", required = true, paramType = "body", dataType = "OrderInformation")
     })
-    public ResponseResult<Object> updateOrderInfo(@RequestBody orderInfoDTO orderInfoDTO) {
+    public ResponseResult<List<OrderInformation>> getOrderByLike(@RequestBody OrderInformation orderInformation){
+        List<OrderInformation> information = iOrderInformationService.getOrderByLike(orderInformation);
+        return new ResponseResult<List<OrderInformation>>(CommonCode.SUCCESS,information);
+    }
+
+    @PostMapping("/updateOrder")
+    @ApiOperation(value="修改订单信息")
+    @ApiImplicitParam(name = "OrderInfoDTO", value = "修改订单信息", required = true, paramType = "body", dataType = "OrderInfoDTO")
+    public ResponseResult<Object> updateOrder(@RequestBody OrderInfoDTO orderInfoDTO) {
         iOrderInformationService.update(orderInfoDTO);
         return  new ResponseResult<>(CommonCode.YES_ADD_ORDER);
     }
 
-    @ApiOperation(value="删除订单信息")
+
+
+    @ApiOperation(value="根据id删除订单信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "orderId", value = "删除订单信息", required = true, paramType = "path", dataType = "int")
+            @ApiImplicitParam(name = "id", value = "订单id", required = true, paramType = "path", dataType = "Integer")
     })
-    @DeleteMapping("deleteOrderInfo/{id}")
-    public ResponseResult<Object> deleteTruckInfo(@PathVariable("id") int id) {
+    @DeleteMapping("deleteOrderById/{id}")
+    public ResponseResult<Object> deleteOrderById(@PathVariable("id") Integer id) {
         iOrderInformationService.delete(id);
         return  new ResponseResult<>(CommonCode.SUCCESS);
     }
 
-    @PostMapping("/addOrderInfo")
+
+
+    @PostMapping("/addOrder")
     @ApiOperation(value="新增订单")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "orderInfoDTO", value = "新增订单信息", required = true, paramType = "body", dataType = "orderInfoDTO")
+            @ApiImplicitParam(name = "OrderInfoDTO", value = "新增订单信息", required = true, paramType = "body", dataType = "OrderInfoDTO")
     })
-    public ResponseResult<Object> addOrderInfo(@RequestBody orderInfoDTO orderInfoDTO) {
+    public ResponseResult<Object> addOrder(@RequestBody OrderInfoDTO orderInfoDTO) {
         iOrderInformationService.add(orderInfoDTO);
-        return  new ResponseResult<>(CommonCode.YES_ADD_TRUCKINFO);
+        return  new ResponseResult<>(CommonCode.YES_ADD_ORDER);
     }
 }

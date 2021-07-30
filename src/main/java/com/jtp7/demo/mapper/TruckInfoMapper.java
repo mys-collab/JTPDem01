@@ -1,7 +1,7 @@
 package com.jtp7.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.jtp7.demo.entity.Truckinfo;
+import com.jtp7.demo.entity.TruckInfo;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @since 2021-07-27
  */
 @Repository
-public interface TruckinfoMapper extends BaseMapper<Truckinfo> {
+public interface TruckInfoMapper extends BaseMapper<TruckInfo> {
 
 }

@@ -2,10 +2,6 @@ package com.jtp7.demo.service;
 
 
 import com.jtp7.demo.entity.LorryInfo;
-import com.jtp7.demo.entity.ReimbursementInfo;
-import com.jtp7.demo.entity.Truckinfo;
-import com.jtp7.demo.entity.tdo.TruckinfoDTO;
-import io.swagger.models.auth.In;
 
 import java.util.List;
 

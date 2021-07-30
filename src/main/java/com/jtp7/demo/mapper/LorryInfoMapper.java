@@ -2,7 +2,6 @@ package com.jtp7.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jtp7.demo.entity.LorryInfo;
-import com.jtp7.demo.entity.Truckinfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

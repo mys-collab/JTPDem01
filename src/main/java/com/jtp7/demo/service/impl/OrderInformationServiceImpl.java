@@ -2,13 +2,13 @@ package com.jtp7.demo.service.impl;
 
 import com.jtp7.demo.entity.LorryInfo;
 import com.jtp7.demo.entity.OrderInformation;
-import com.jtp7.demo.entity.Truckinfo;
+import com.jtp7.demo.entity.TruckInfo;
 import com.jtp7.demo.entity.response.CommonCode;
-import com.jtp7.demo.entity.tdo.orderInfoDTO;
+import com.jtp7.demo.entity.dto.OrderInfoDTO;
 import com.jtp7.demo.exception.ExceptionCast;
 import com.jtp7.demo.mapper.OrderInformationMapper;
 import com.jtp7.demo.service.IOrderInformationService;
-import com.jtp7.demo.service.ITruckinfoService;
+import com.jtp7.demo.service.ITruckInfoService;
 import com.jtp7.demo.service.LorryInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -29,22 +29,27 @@ import java.util.List;
  */
 @Slf4j
 @Service
-@Transactional
+@Transactional(rollbackFor = {RuntimeException.class,Exception.class})
 public class OrderInformationServiceImpl implements IOrderInformationService {
 
     @Autowired
     private OrderInformationMapper orderInformationMapper;
 
     @Autowired
-    private ITruckinfoService iTruckinfoService;
+    private ITruckInfoService iTruckinfoService;
 
     @Autowired
     private LorryInfoService lorryInfoService;
 
-    List<Truckinfo> truckinfos;
+    List<TruckInfo> truckinfos;
     BigDecimal Compensate;
     int i = 0;
 
+    /**
+     * 查询所有订单
+     *
+     * @return
+     */
     @Override
     public List<OrderInformation> findAllOrders() {
         List<OrderInformation> orderInformations = orderInformationMapper.selectList(null);
@@ -54,13 +59,18 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
         return orderInformations;
     }
 
-
+    /**
+     * 对订单更新
+     *
+     * @param orderInfoDTO
+     * @return
+     */
     @Override
-    public orderInfoDTO update(orderInfoDTO orderInfoDTO) {
+    public OrderInfoDTO update(OrderInfoDTO orderInfoDTO) {
 
         if(orderInfoDTO.getDate() != null){
 
-            truckinfos = iTruckinfoService.findbyVersion(0);
+            truckinfos = iTruckinfoService.findByVersion(0);
             if (truckinfos.isEmpty()){
                 ExceptionCast.cast(CommonCode.FAIL_ORDER_TRUCK);
             }
@@ -81,6 +91,12 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
         return null;
     }
 
+    /**
+     *根据订单id删除订单
+     *
+     * @param id
+     * @return
+     */
     @Override
     public int delete(int id) {
         int row=orderInformationMapper.deleteById(id);
@@ -90,11 +106,17 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
         return row;
     }
 
+    /**
+     * 增加一条订单
+     *
+     * @param orderInfoDTO
+     * @return
+     */
     @Override
-    public orderInfoDTO add(orderInfoDTO orderInfoDTO) {
+    public OrderInfoDTO add(OrderInfoDTO orderInfoDTO) {
         if(orderInfoDTO.getDate() != null){
 
-            truckinfos = iTruckinfoService.findbyVersion(0);
+            truckinfos = iTruckinfoService.findByVersion(0);
             if (truckinfos.isEmpty()){
                 ExceptionCast.cast(CommonCode.FAIL_ORDER_TRUCK);
             }
@@ -113,5 +135,20 @@ public class OrderInformationServiceImpl implements IOrderInformationService {
             return orderInfoDTO;
         }
         return null;
+    }
+
+    /**
+     * 全字段模糊查询
+     *
+     * @param orderInformation
+     * @return
+     */
+    @Override
+    public List<OrderInformation> getOrderByLike(OrderInformation orderInformation) {
+        List<OrderInformation> information=orderInformationMapper.getOrderByLike(orderInformation);
+        if (information == null ) {
+            ExceptionCast.cast(CommonCode.FAIL);
+        }
+        return information;
     }
 }

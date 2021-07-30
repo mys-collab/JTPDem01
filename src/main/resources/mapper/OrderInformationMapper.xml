@@ -22,4 +22,34 @@
 gap, date, time, driver, truck, is_compensate, compensate, total
     </sql>
 
+    <select id="getOrderByLike" parameterType="OrderInformation" resultType="OrderInformation">
+        SELECT * FROM order_information WHERE 1 = 1
+        <if test="orderId != null">
+            AND order_id like concat('%',#{orderId},'%')
+        </if>
+        <if test="address != null">
+            AND address like concat('%',#{address},'%')
+        </if>
+        <if test="gap != null">
+            AND gap like concat('%',#{gap},'%')
+        </if>
+        <if test="date != null">
+            AND date like concat('%',#{date},'%')
+        </if>
+        <if test="time != null">
+            AND time like concat('%',#{time},'%')
+        </if>
+        <if test="driver != null">
+            AND driver like concat('%',#{driver},'%')
+        </if>
+        <if test="truck != null">
+            AND truck like concat('%',#{truck},'%')
+        </if>
+        <if test="compensate != null">
+            AND compensate like concat('%',#{compensate},'%')
+        </if>
+        <if test="total != null">
+            AND total like concat('%',#{total},'%')
+        </if>
+    </select>
 </mapper>
