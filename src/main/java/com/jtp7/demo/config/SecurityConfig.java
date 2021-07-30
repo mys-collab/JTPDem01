@@ -39,7 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
-                .withUser("jtp7").password(new BCryptPasswordEncoder().encode("123456"));//默认用户
+                .withUser("jtp7").password(new BCryptPasswordEncoder().encode("123456")).roles("root");//默认用户
+
 
         auth.userDetailsService(userDetailsService).passwordEncoder(password());
     }
