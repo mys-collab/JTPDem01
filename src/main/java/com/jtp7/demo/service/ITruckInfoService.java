@@ -2,6 +2,8 @@ package com.jtp7.demo.service;
 
 
 import com.jtp7.demo.entity.TruckInfo;
+import com.jtp7.demo.entity.response.PageListResult;
+import com.jtp7.demo.entity.vo.AddTruckInfoDTO;
 import com.jtp7.demo.entity.dto.TruckInfoDTO;
 
 import java.util.List;
@@ -27,7 +29,7 @@ public interface ITruckInfoService {
      * 新增用户
      * @param truckInfo
      */
-    TruckInfoDTO add(TruckInfoDTO truckInfo);
+    AddTruckInfoDTO add(AddTruckInfoDTO truckInfo);
 
     /**
      * 修改用户信息
@@ -37,11 +39,13 @@ public interface ITruckInfoService {
      TruckInfoDTO update(TruckInfoDTO truckInfo );
 
     /**
-     * 按司机姓名进行模糊搜索
+     * 按司机姓名进行分页模糊查询
      * @param name
+     * @param currentPage
+     * @param size
      * @return
      */
-    List<TruckInfo> findByName(String name);
+    PageListResult<TruckInfo> findByName(String name, Integer currentPage, Integer size);
 
     /**
      * 查询司机状态为在岗的信息
