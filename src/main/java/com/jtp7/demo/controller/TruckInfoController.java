@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -72,5 +73,18 @@ public class TruckInfoController {
         iTruckInfoService.delete(id);
         return  new ResponseResult<>(CommonCode.SUCCESS);
     }
+
+
+    @ApiOperation(value="根据状态查询司机信息")
+    @ApiImplicitParam(name = "id", value = "根据状态查询司机信息", required = false, paramType = "query", dataType = "Integer")
+    @GetMapping("/findByVersion")
+    public ResponseResult<TruckInfo> findByVersion(@RequestParam(value = "id", required = false) Integer id) {
+        if (ObjectUtils.isEmpty(id)){
+            id = 0;
+        }
+        List<TruckInfo> byVersion = iTruckInfoService.findByVersion(id);
+        return  new ResponseResult<>(CommonCode.SUCCESS,byVersion);
+    }
+
 
 }
