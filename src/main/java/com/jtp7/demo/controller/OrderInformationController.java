@@ -27,7 +27,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@CrossOrigin
+@CrossOrigin(allowedHeaders ="*")
 @Api(value = "订单信息表", tags = {SwaggerConfiguration.TAG_4})
 public class OrderInformationController {
 

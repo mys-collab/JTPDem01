@@ -24,7 +24,8 @@ public enum CommonCode implements ResultCode{
     NO_ORDERINFO(false,10007,"还没有该订单"),
     YES_ADD_ORDER(true,10008,"保存订单成功！"),
     FAIL_ORDER_TRUCK(false,11112,"操作失败,此时无司机！"),
-    FAIL_ORDER_LORRY(false,1113,"操作失败,此时无卡车！");
+    FAIL_ORDER_LORRY(false,1113,"操作失败,此时无卡车！"),
+    ILLEGAL_REQUEST(false,1113,"非法的请求");
 
 
     //操作是否成功

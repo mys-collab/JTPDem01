@@ -30,7 +30,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@CrossOrigin
+@CrossOrigin(allowedHeaders ="*")
 @Api(value = "司机信息表", tags = {SwaggerConfiguration.TAG_1})
 public class TruckInfoController {
 
@@ -53,7 +53,7 @@ public class TruckInfoController {
         return  new ResponseResult<>(CommonCode.YES_ADD_TRUCKINFO);
     }
 
-    @PostMapping("updateTruckInfo")
+    @PutMapping("updateTruckInfo")
     @ApiOperation(value="修改司机信息")
     @ApiImplicitParam(name = "truckInfoDTO", value = "修改司机信息", required = true, paramType = "body", dataType = "TruckInfoDTO")
     public ResponseResult<Object> updateTruckInfo(@RequestBody TruckInfoDTO truckInfoDTO) {

@@ -26,7 +26,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@CrossOrigin
+@CrossOrigin()
 @Api(value = "卡车信息表", tags = {SwaggerConfiguration.TAG_3})
 public class LorryInfoController {
 

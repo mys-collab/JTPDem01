@@ -6,10 +6,12 @@ import com.jtp7.demo.entity.response.ResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.jtp7.demo.entity.response.CommonCode;
+
 
 /**
  *统一的异常捕获类
@@ -31,6 +33,7 @@ public class ExceptionCatch{
     static {
         //定义了异常类型所对应的错误代码
         builder.put(HttpRequestMethodNotSupportedException.class,CommonCode.INFO);
+        builder.put(HttpRequestMethodNotSupportedException.class,CommonCode.ILLEGAL_REQUEST);
     }
 
 

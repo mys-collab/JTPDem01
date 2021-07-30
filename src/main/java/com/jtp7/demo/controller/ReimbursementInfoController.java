@@ -31,7 +31,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@CrossOrigin
+@CrossOrigin(allowedHeaders ="*")
 @Api(value = "报销申请表", tags = {SwaggerConfiguration.TAG_2})
 public class ReimbursementInfoController {
     @Autowired
