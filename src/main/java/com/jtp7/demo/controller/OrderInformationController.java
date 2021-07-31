@@ -77,7 +77,7 @@ public class OrderInformationController {
     @PostMapping("/addOrder")
     @ApiOperation(value="新增订单")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "OrderInfoDTO", value = "新增订单信息", required = true, paramType = "body", dataType = "OrderInfoDTO")
+            @ApiImplicitParam(name = "orderInfoDTO", value = "新增订单信息", required = true, paramType = "body", dataType = "OrderInfoDTO")
     })
     public ResponseResult<Object> addOrder(@RequestBody OrderInfoDTO orderInfoDTO) {
         iOrderInformationService.add(orderInfoDTO);
