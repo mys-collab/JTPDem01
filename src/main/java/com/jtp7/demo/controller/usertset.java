@@ -7,4 +7,8 @@ package com.jtp7.demo.controller;
  * 描述: test
  */
 public class usertset {
+
+    public static void main(String[] args) {
+        System.out.println("mys");
+    }
 }
