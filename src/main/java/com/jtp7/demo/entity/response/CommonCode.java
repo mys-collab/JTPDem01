@@ -25,6 +25,8 @@ public enum CommonCode implements ResultCode{
     YES_ADD_ORDER(true,10008,"保存订单成功！"),
     FAIL_ORDER_TRUCK(false,11112,"操作失败,此时无司机！"),
     FAIL_ORDER_LORRY(false,1113,"操作失败,此时无卡车！"),
+    FAIL_INCOMPLETE_INFORMATION(false,11116,"请填写完全相关信息"),
+    FAIL_IS_COMPENSATE(false,11115,"此状态，不可再填写补偿金额"),
     NO_JSON(false,1114,"请求的json格式错误");
 
 

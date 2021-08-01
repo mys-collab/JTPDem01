@@ -18,5 +18,4 @@ import java.time.LocalDate;
  */
 @Repository
 public interface OrderInformationMapper extends BaseMapper<OrderInformation> {
-    List<OrderInformation> getOrderByLike(OrderInformation orderInformation);
 }

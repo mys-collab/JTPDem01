@@ -44,6 +44,8 @@ public class OrderInfoDTO implements Serializable {
     @ApiModelProperty(value = "额外奖励")
     private BigDecimal compensate;
 
+    @ApiModelProperty(value = "总价")
+    private BigDecimal total;
 
 
 }
